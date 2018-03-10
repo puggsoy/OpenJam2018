@@ -487,6 +487,36 @@ Prefab:
       propertyPath: m_maxItemsInSoup
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_itemPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4156953311614662, guid: 27c0b5ea0430b3f4db6c24f197e5fed2,
+        type: 2}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_itemPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4825826167303050, guid: 33775c27919f2554189a0a70f03978c9,
+        type: 2}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_itemPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4035854123589072, guid: 99a53526e031cc24791c705024e64648,
+        type: 2}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_itemPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4877942850143530, guid: c8e03435dfff44a4da9c003fa330e854,
+        type: 2}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_itemPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4452079455424206, guid: 0f5f6965f414d2d44b6e61a5500a71f9,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e6f142b8d70ce74bb229bdd367d837a, type: 2}
   m_IsPrefabParent: 0
