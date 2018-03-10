@@ -8,34 +8,38 @@ public class Soup : MonoBehaviour
     public static Soup Instance = null;
     public System.Action OnEmpty;
 
+    [Header("Soup")]
     [SerializeField]
     public float m_maxSoupLevel = 1000.0f;
+    public float m_currentSoupLevel = 0.0f;
+    public float m_soupPercentage = 1.0f;
+    public int m_numSections = 0;
+    public List<SoupSection> m_sectionsList = null;
 
+    [Header("Assets")]
     [SerializeField]
-    public SpriteRenderer m_soupSprite = null;
+    private SpriteRenderer m_soupSprite = null;
     [SerializeField]
-    public SpriteRenderer m_bowlSprite = null;
+    private SpriteRenderer m_bowlSprite = null;
+    [SerializeField]
+    private Transform m_itemPrefab = null;
 
+    [Header("Spawning")]
     [SerializeField]
-    public float m_itemFrequencyMin = 0.0f;
-
+    private float m_itemFrequencyMin = 0.0f;
     [SerializeField]
-    public float m_itemFrequencyMax = 1.0f;
-
+    private float m_itemFrequencyMax = 1.0f;
     [SerializeField]
-    public Transform m_itemPrefab = null;
+    private float m_maxItemsInSoup = 12;
+    [SerializeField]
+    private float m_maxItemsInSection = 3;
 
+    [Header("Players")]
     [SerializeField]
     public int m_numPlayers = 4;
-
     [SerializeField]
     public int m_spacesBetweenPlayers;
 
-    public int m_numSections = 0;
-
-    public float m_currentSoupLevel = 0.0f;
-    public float m_soupPercentage = 1.0f;
-    public List<SoupSection> m_sectionsList = null;
     public bool m_gameRunning = true;
 
     private float m_itemTimer = 0.0f;
@@ -132,9 +136,25 @@ public class Soup : MonoBehaviour
     private void SpawnItem()
     {
         // Pick a random section
-        int randIndex = Random.Range(0, m_sectionsList.Count);
 
-        m_sectionsList[randIndex].SpawnItem();
+        // Populate list of available sections
+        List<SoupSection> validSections = new List<SoupSection>();
+        int totalAlreadySpawned = 0;
+        for (int i = 0; i < m_sectionsList.Count; ++i)
+        {
+            totalAlreadySpawned += m_sectionsList[i].m_items.Count;
+            if (m_sectionsList[i].m_items.Count < m_maxItemsInSection)
+            {
+                validSections.Add(m_sectionsList[i]);
+            }
+        }
+
+        if (totalAlreadySpawned < m_maxItemsInSoup && validSections.Count > 0)
+        {
+            int randIndex = Random.Range(0, validSections.Count);
+
+            validSections[randIndex].SpawnItem();
+        }
     }
 	
 	// Update is called once per frame
