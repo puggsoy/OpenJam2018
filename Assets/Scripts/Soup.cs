@@ -15,6 +15,7 @@ public class Soup : MonoBehaviour
     public float m_soupPercentage = 1.0f;
     public int m_numSections = 0;
     public List<SoupSection> m_sectionsList = null;
+    public float m_swirlSpeed = 1.0f;
 
     [Header("Assets")]
     [SerializeField]
@@ -43,6 +44,7 @@ public class Soup : MonoBehaviour
     public bool m_gameRunning = true;
 
     private float m_itemTimer = 0.0f;
+    private Vector3 m_originScale;
 
     public void RemoveSoup(float amount)
     {
@@ -80,6 +82,7 @@ public class Soup : MonoBehaviour
         m_itemTimer = Random.Range(m_itemFrequencyMin, m_itemFrequencyMax);
         m_numSections = m_numPlayers * (m_spacesBetweenPlayers + 1);
         m_currentSoupLevel = m_maxSoupLevel;
+        m_originScale = m_soupSprite.transform.localScale;
         SetUpSoupSections();
     }
 
@@ -151,26 +154,24 @@ public class Soup : MonoBehaviour
     public void Swirl()
     {
         List<SoupItem> lastList = m_sectionsList[0].m_items;
-        List<SoupItem> currentList = lastList;
-        for (int i = 1; i < m_numSections; ++i)
+        SoupItem.ItemType lastType = m_sectionsList[0].m_itemType;
+
+        for (int i = 0; i < m_numSections - 1; ++i)
         {
-            currentList = m_sectionsList[i].m_items;
-
-            m_sectionsList[i].m_items = lastList;
-            m_sectionsList[i].Swirl();
-
-            lastList = currentList;
+            m_sectionsList[i].m_items = m_sectionsList[i + 1].m_items;
+            m_sectionsList[i].Swirl(m_sectionsList[i + 1].m_itemType);
         }
 
         // swirl last
-        m_sectionsList[0].m_items = lastList;
-        m_sectionsList[0].Swirl();
+        m_sectionsList[m_numSections - 1].m_items = lastList;
+        //m_sectionsList[0].m_itemType = lastType;
+        m_sectionsList[m_numSections - 1].Swirl(lastType);
 
     }
 
     private void UpdateSoupImage()
     {
-        m_soupSprite.transform.localScale = new Vector3(m_soupPercentage, m_soupPercentage, m_soupPercentage);
+        m_soupSprite.transform.localScale = new Vector3(m_originScale.x * m_soupPercentage, m_originScale.y * m_soupPercentage, m_originScale.y * m_soupPercentage);
     }
 
     private void UpdatePercentage()

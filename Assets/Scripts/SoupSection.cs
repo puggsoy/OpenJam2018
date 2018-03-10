@@ -13,6 +13,9 @@ public class SoupSection
     public float m_endAngle = 0.0f;
     public float m_radius = 0.0f;
 
+    private bool m_isSwirling = false;
+    private float m_distanceToMove = 0.0f;
+
     public SoupSection(float area, int index, float start, float radius, SoupItem.ItemType type)
     {
         m_area = area;
@@ -31,18 +34,37 @@ public class SoupSection
         {
             m_items[i].transform.Rotate(Vector3.forward, m_items[i].m_rotationSpeed * Time.deltaTime);
         }
+
+        if (m_isSwirling)
+        {
+            float distanceMoved = (m_endAngle - m_startAngle) * Time.deltaTime * Soup.Instance.m_swirlSpeed;
+
+            for (int i = 0; i < m_items.Count; ++i)
+            {
+                m_items[i].transform.RotateAround(Soup.Instance.transform.position, Vector3.back, distanceMoved);
+            }
+
+            m_distanceToMove -= distanceMoved;
+
+            m_isSwirling = m_distanceToMove > 0;
+        }
     }
 
-    public void Swirl()
+    public void Swirl(SoupItem.ItemType newType)
     {
-        for (int i = 0; i < m_items.Count; ++i)
-        {
-            m_items[i].transform.RotateAround(Soup.Instance.transform.position, Vector3.forward, m_endAngle - m_startAngle);
-        }
+        m_isSwirling = true;
+        m_distanceToMove = m_endAngle - m_startAngle;
+        m_itemType = newType;
+        //for (int i = 0; i < m_items.Count; ++i)
+        //{
+        //    m_items[i].transform.RotateAround(Soup.Instance.transform.position, Vector3.forward, m_endAngle - m_startAngle);
+        //}
     }
 
     public void SpawnItem()
     {
+        if (m_isSwirling)
+            return;
         // this is a non equal distribution of points
         // first pick a random angle
         float randAngle = Random.Range(m_startAngle * 1.1f, m_endAngle * 0.9f);
