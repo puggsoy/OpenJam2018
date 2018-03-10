@@ -10,13 +10,12 @@ public class Spoon : MonoBehaviour {
 	public bool isScooping = false;
 	public float speed = 10f;
 	public bool goingUp = false;
-	public System.Action OnScoop;
+	public System.Action<string> OnScoop;
 
 	// Use this for initialization
 	void Start () {
 		originalPosition = (Vector2)transform.localPosition;
 		maxPosition = originalPosition + ((Vector2)Vector3.up * maxDistance);
-		Debug.Log ("maxPosition is: " + maxPosition);
 	}
 	
 	// Update is called once per frame
@@ -24,12 +23,18 @@ public class Spoon : MonoBehaviour {
 		AnimateScoop ();
 	}
 
-	public void Scoop() {
+	public void Scoop(int index) {
 		if (isScooping)
 			return;
 		goingUp = true;
 		isScooping = true;
-		OnScoop ();
+		SoupItem item = Soup.Instance.RemoveItem (index);
+
+		if (item == null) {
+			OnScoop ("broth");
+		} else {
+			OnScoop ("food");
+		}
 	}
 
 	void AnimateScoop() {

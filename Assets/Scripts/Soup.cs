@@ -123,6 +123,15 @@ public class Soup : MonoBehaviour
         return m_sectionsList[index].m_items;
     }
 
+	public SoupItem RemoveItem(int index)
+	{
+		if (m_sectionsList [index].m_items.Count == 0)
+			return null;
+		SoupItem itm = m_sectionsList [index].m_items [0];
+		m_sectionsList [index].m_items.RemoveAt (0);
+		return itm;
+	}
+
     private void DrawSections()
     {
         Vector2 center = transform.position;
