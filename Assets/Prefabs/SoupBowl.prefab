@@ -74,17 +74,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxSoupLevel: 1000
-  m_soupRect: {fileID: 224203554556562100}
-  m_itemFrequencyMin: 0.1
-  m_itemFrequencyMax: 1
-  m_itemPrefab: {fileID: 224323082977769408, guid: a8cd9c55eacaf5a4882eb020b42f983c,
-    type: 2}
-  m_numPlayers: 4
-  m_spacesBetweenPlayers: 2
-  m_numSections: 4
-  m_soupImage: {fileID: 0}
   m_currentSoupLevel: 0
   m_soupPercentage: 1
+  m_numSections: 4
+  m_soupSprite: {fileID: 212112145327303370}
+  m_bowlSprite: {fileID: 212004639329178690}
+  m_itemPrefabs:
+  - {fileID: 224056727260694684, guid: 27c0b5ea0430b3f4db6c24f197e5fed2, type: 2}
+  - {fileID: 224056727260694684, guid: 33775c27919f2554189a0a70f03978c9, type: 2}
+  - {fileID: 224056727260694684, guid: 99a53526e031cc24791c705024e64648, type: 2}
+  - {fileID: 224056727260694684, guid: c8e03435dfff44a4da9c003fa330e854, type: 2}
+  - {fileID: 224056727260694684, guid: 0f5f6965f414d2d44b6e61a5500a71f9, type: 2}
+  m_itemFrequencyMin: 0.1
+  m_itemFrequencyMax: 1
+  m_maxItemsInSoup: 12
+  m_maxItemsInSection: 3
+  m_numPlayers: 4
+  m_spacesBetweenPlayers: 2
   m_gameRunning: 1
 --- !u!212 &212004639329178690
 SpriteRenderer:
@@ -120,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 965e588f19900604e86e4947b40931c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1c72cd9973896a4fae56d2c42f87f48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b65b30672ff4b1f48b798f1c908a0ce2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

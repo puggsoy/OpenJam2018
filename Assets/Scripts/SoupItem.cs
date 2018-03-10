@@ -1,9 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SoupItem : MonoBehaviour
 {
+    public enum ItemType
+    {
+        Broccoli,
+        Egg,
+        Mushroom,
+        Pinapple,
+        Shrimp
+    }
+
     [SerializeField]
     private float m_minRotationSpeed = -15.0f;
     [SerializeField]

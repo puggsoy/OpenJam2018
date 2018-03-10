@@ -22,7 +22,7 @@ public class Soup : MonoBehaviour
     [SerializeField]
     private SpriteRenderer m_bowlSprite = null;
     [SerializeField]
-    private Transform m_itemPrefab = null;
+    private List<Transform> m_itemPrefabs = null;
 
     [Header("Spawning")]
     [SerializeField]
@@ -91,14 +91,14 @@ public class Soup : MonoBehaviour
         float radius = m_soupSprite.bounds.size.x / 2;
         for (int i = 0; i < m_numSections; ++i)
         {
-            m_sectionsList.Add(new SoupSection(areaSize, i, m_itemPrefab, angle, radius));
+            m_sectionsList.Add(new SoupSection(areaSize, i, angle, radius));
             angle += areaSize;
         }
     }
 
-    public SoupItem InstantiateSoupItem(Vector2 position, Quaternion rotation)
+    public SoupItem InstantiateSoupItem(Vector2 position, Quaternion rotation, int type)
     {
-        return Instantiate(m_itemPrefab, position, rotation).GetComponent<SoupItem>();
+        return Instantiate(m_itemPrefabs[type], position, rotation).GetComponent<SoupItem>();
     }
 
     public List<SoupItem> GetItemsInSection(int index)

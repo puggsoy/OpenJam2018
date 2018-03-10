@@ -113,11 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!212 &187367607 stripped
-SpriteRenderer:
-  m_PrefabParentObject: {fileID: 212004639329178690, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-    type: 2}
-  m_PrefabInternal: {fileID: 767435056}
 --- !u!1 &254977745
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,43 +296,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-        type: 2}
-      propertyPath: m_bowlSprite
-      value: 
-      objectReference: {fileID: 187367607}
-    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-        type: 2}
-      propertyPath: m_soupSprite
-      value: 
-      objectReference: {fileID: 1540808383}
-    - target: {fileID: 212004639329178690, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c1c72cd9973896a4fae56d2c42f87f48,
-        type: 3}
-    - target: {fileID: 224656459793002140, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224618830836419088, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212112145327303370, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-        type: 2}
-      propertyPath: m_itemPrefab
-      value: 
-      objectReference: {fileID: 224056727260694684, guid: 27c0b5ea0430b3f4db6c24f197e5fed2,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e6f142b8d70ce74bb229bdd367d837a, type: 2}
   m_IsPrefabParent: 0
@@ -508,11 +466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441347d5651628e41912cc6c84a94075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &1540808383 stripped
-SpriteRenderer:
-  m_PrefabParentObject: {fileID: 212112145327303370, guid: 6e6f142b8d70ce74bb229bdd367d837a,
-    type: 2}
-  m_PrefabInternal: {fileID: 767435056}
 --- !u!1 &1831962401
 GameObject:
   m_ObjectHideFlags: 0

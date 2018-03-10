@@ -7,20 +7,21 @@ public class SoupSection
     public float m_area = 0.0f;
     public int m_index = 0;
     public List<SoupItem> m_items = new List<SoupItem>();
-    public Transform m_itemPrefab = null;
+    public SoupItem.ItemType m_itemType = SoupItem.ItemType.Broccoli;
 
     public float m_startAngle = 0.0f;
     public float m_endAngle = 0.0f;
     public float m_radius = 0.0f;
 
-    public SoupSection(float area, int index, Transform prefab, float start, float radius)
+    public SoupSection(float area, int index, float start, float radius)
     {
         m_area = area;
         m_index = index;
-        m_itemPrefab = prefab;
         m_startAngle = start;
         m_endAngle = start + area;
         m_radius = radius;
+
+        m_itemType = (SoupItem.ItemType)Random.Range((int)SoupItem.ItemType.Broccoli, (int)SoupItem.ItemType.Shrimp);
     }
 
     public void Update()
@@ -48,7 +49,7 @@ public class SoupSection
         float y = Soup.Instance.transform.position.y + randDistance * Mathf.Sin(randAngle * (Mathf.PI / 180));
         Vector2 spawnPoint = new Vector2(x, y);
 
-        SoupItem spawned = Soup.Instance.InstantiateSoupItem(spawnPoint, new Quaternion(Quaternion.identity.x, Quaternion.identity.y, randRotation, Quaternion.identity.w));
+        SoupItem spawned = Soup.Instance.InstantiateSoupItem(spawnPoint, new Quaternion(Quaternion.identity.x, Quaternion.identity.y, randRotation, Quaternion.identity.w), (int)m_itemType);
         spawned.transform.SetParent(Soup.Instance.transform);
         spawned.transform.position = spawnPoint;
         spawned.m_rotationSpeed = Random.Range(-15.0f, 15.0f);
