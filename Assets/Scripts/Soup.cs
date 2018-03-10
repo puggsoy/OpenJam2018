@@ -148,6 +148,26 @@ public class Soup : MonoBehaviour
         }
     }
 
+    public void Swirl()
+    {
+        List<SoupItem> lastList = m_sectionsList[0].m_items;
+        List<SoupItem> currentList = lastList;
+        for (int i = 1; i < m_numSections; ++i)
+        {
+            currentList = m_sectionsList[i].m_items;
+
+            m_sectionsList[i].m_items = lastList;
+            m_sectionsList[i].Swirl();
+
+            lastList = currentList;
+        }
+
+        // swirl last
+        m_sectionsList[0].m_items = lastList;
+        m_sectionsList[0].Swirl();
+
+    }
+
     private void UpdateSoupImage()
     {
         m_soupSprite.transform.localScale = new Vector3(m_soupPercentage, m_soupPercentage, m_soupPercentage);
@@ -190,6 +210,12 @@ public class Soup : MonoBehaviour
         {
             RemoveSoup(50);
         }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Swirl();
+        }
+
         DrawSections();
 
         m_itemTimer -= Time.deltaTime;

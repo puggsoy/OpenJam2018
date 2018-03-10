@@ -118,14 +118,14 @@ MonoBehaviour:
   m_soupSprite: {fileID: 212112145327303370}
   m_bowlSprite: {fileID: 212004639329178690}
   m_itemPrefabs:
-  - {fileID: 224056727260694684, guid: 27c0b5ea0430b3f4db6c24f197e5fed2, type: 2}
-  - {fileID: 224056727260694684, guid: 33775c27919f2554189a0a70f03978c9, type: 2}
-  - {fileID: 224056727260694684, guid: 99a53526e031cc24791c705024e64648, type: 2}
-  - {fileID: 224056727260694684, guid: c8e03435dfff44a4da9c003fa330e854, type: 2}
-  - {fileID: 224056727260694684, guid: 0f5f6965f414d2d44b6e61a5500a71f9, type: 2}
+  - {fileID: 4156953311614662, guid: 27c0b5ea0430b3f4db6c24f197e5fed2, type: 2}
+  - {fileID: 4825826167303050, guid: 33775c27919f2554189a0a70f03978c9, type: 2}
+  - {fileID: 4035854123589072, guid: 99a53526e031cc24791c705024e64648, type: 2}
+  - {fileID: 4877942850143530, guid: c8e03435dfff44a4da9c003fa330e854, type: 2}
+  - {fileID: 4452079455424206, guid: 0f5f6965f414d2d44b6e61a5500a71f9, type: 2}
   m_itemFrequencyMin: 0.1
-  m_itemFrequencyMax: 1
-  m_maxItemsInSoup: 18
+  m_itemFrequencyMax: 0.5
+  m_maxItemsInSoup: 21
   m_maxItemsInSection: 3
   m_numPlayers: 4
   m_spacesBetweenPlayers: 1

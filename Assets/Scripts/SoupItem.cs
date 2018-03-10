@@ -2,6 +2,7 @@
 
 public class SoupItem : MonoBehaviour
 {
+    [SerializeField]
     public enum ItemType
     {
         Broccoli,
@@ -15,6 +16,12 @@ public class SoupItem : MonoBehaviour
     private float m_minRotationSpeed = -15.0f;
     [SerializeField]
     private float m_maxRotationSPeed = 15.0f;
+
+    [SerializeField]
+    public ItemType m_itemType;
+
+    [SerializeField]
+    public float m_soupValue = 1.0f;
 
     [SerializeField]
     private float m_minAlpha = -50;
