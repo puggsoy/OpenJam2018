@@ -89,9 +89,26 @@ public class Soup : MonoBehaviour
         float areaSize = 360.0f / m_numSections;
         float angle = 0.0f;
         float radius = m_soupSprite.bounds.size.x / 2;
+        SoupItem.ItemType previousType = SoupItem.ItemType.Broccoli;
+        SoupItem.ItemType firstType = previousType;
+
         for (int i = 0; i < m_numSections; ++i)
         {
-            m_sectionsList.Add(new SoupSection(areaSize, i, angle, radius));
+            SoupItem.ItemType currentType = (SoupItem.ItemType)Random.Range((int)SoupItem.ItemType.Broccoli, (int)SoupItem.ItemType.Shrimp);
+
+            while (currentType == previousType || (i == m_numSections - 1 && currentType == firstType))
+            {
+                currentType = (SoupItem.ItemType)Random.Range((int)SoupItem.ItemType.Broccoli, (int)SoupItem.ItemType.Shrimp);
+            }
+
+            if (i == 0)
+            {
+                firstType = currentType;
+            }
+
+            previousType = currentType;
+
+            m_sectionsList.Add(new SoupSection(areaSize, i, angle, radius, currentType));
             angle += areaSize;
         }
     }
