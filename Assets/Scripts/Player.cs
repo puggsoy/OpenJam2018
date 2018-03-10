@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public int satisfactionLevel = 0;
 	public int numPreferredFoodEaten = 0;
 	public Spoon spoon;
+	public string eatInput;
 
 
 	// Use this for initialization
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		bool eatIsDown = Input.GetButtonDown ("Eat");
+		bool eatIsDown = Input.GetButtonDown (eatInput);
 		if (eatIsDown) {
 			spoon.Scoop ();
 		}

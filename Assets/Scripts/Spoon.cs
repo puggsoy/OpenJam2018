@@ -14,8 +14,9 @@ public class Spoon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		originalPosition = transform.localPosition;
-		maxPosition = originalPosition + ((Vector2)transform.up * maxDistance);
+		originalPosition = (Vector2)transform.localPosition;
+		maxPosition = originalPosition + ((Vector2)Vector3.up * maxDistance);
+		Debug.Log ("maxPosition is: " + maxPosition);
 	}
 	
 	// Update is called once per frame
