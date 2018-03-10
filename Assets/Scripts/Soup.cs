@@ -15,6 +15,15 @@ public class Soup : MonoBehaviour
     public RectTransform m_soupRect = null;
 
     [SerializeField]
+    public float m_itemFrequencyMin = 0.0f;
+
+    [SerializeField]
+    public float m_itemFrequencyMax = 1.0f;
+
+    [SerializeField]
+    public Transform m_itemPrefab = null;
+
+    [SerializeField]
     public int m_numPlayers = 4;
 
     [SerializeField]
@@ -28,6 +37,8 @@ public class Soup : MonoBehaviour
     public float m_currentSoupLevel = 0.0f;
     public float m_soupPercentage = 1.0f;
     public List<SoupSection> m_sectionsList = null;
+
+    private float m_itemTimer = 0.0f;
 
     public void RemoveSoup(float amount)
     {
@@ -62,18 +73,33 @@ public class Soup : MonoBehaviour
 
     public void Initialise()
     {
+        m_itemTimer = Random.Range(m_itemFrequencyMin, m_itemFrequencyMax);
         m_numSections = m_numPlayers * (m_spacesBetweenPlayers + 1);
         m_currentSoupLevel = m_maxSoupLevel;
-        m_sectionsList = new List<SoupSection>();
+        SetUpSoupSections();
     }
 
     private void SetUpSoupSections()
     {
+        m_sectionsList = new List<SoupSection>();
         float areaSize = 360.0f / m_numSections;
+        float angle = 0.0f;
+        float radius = m_soupRect.rect.width / 2;
         for (int i = 0; i < m_numSections; ++i)
         {
-            m_sectionsList.Add(new SoupSection(areaSize));
+            m_sectionsList.Add(new SoupSection(areaSize, i, m_itemPrefab, angle, radius));
+            angle += areaSize;
         }
+    }
+
+    public SoupItem InstantiateSoupItem(Vector2 position, Quaternion rotation)
+    {
+        return Instantiate(m_itemPrefab, position, rotation).GetComponent<SoupItem>();
+    }
+
+    public List<SoupItem> GetItemsInSection(int index)
+    {
+        return m_sectionsList[index].m_items;
     }
 
     private void DrawSections()
@@ -102,6 +128,14 @@ public class Soup : MonoBehaviour
         m_soupPercentage = m_currentSoupLevel / m_maxSoupLevel;
         m_soupPercentage = m_soupPercentage < 0 ? 0 : m_soupPercentage;
     }
+
+    private void SpawnItem()
+    {
+        // Pick a random section
+        int randIndex = Random.Range(0, m_sectionsList.Count);
+
+        m_sectionsList[randIndex].SpawnItem();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -112,5 +146,12 @@ public class Soup : MonoBehaviour
         }
         DrawSections();
 
+        m_itemTimer -= Time.deltaTime;
+
+        if (m_itemTimer < 0)
+        {
+            SpawnItem();
+            m_itemTimer = Random.Range(m_itemFrequencyMin, m_itemFrequencyMax);
+        }
     }
 }

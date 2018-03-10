@@ -13,8 +13,8 @@ public class spoonMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		originalPosition = transform.position;
-		maxPosition = originalPosition + (Vector2.up * maxDistance);
+		originalPosition = transform.localPosition;
+		maxPosition = originalPosition + ((Vector2)transform.up * maxDistance);
 	}
 	
 	// Update is called once per frame
@@ -31,16 +31,20 @@ public class spoonMovement : MonoBehaviour {
 		if (!isScooping)
 			return;
 
+		Debug.Log ("myy: " + transform.localPosition.y);
+		Debug.Log ("maxy: " + maxPosition);
+
+
 		if (goingUp) {
 			transform.Translate (0, speed, 0);
-			if (transform.position.y > maxPosition.y) {
-				transform.position = maxPosition;
+			if (transform.localPosition.y > maxPosition.y) {
+				transform.localPosition = maxPosition;
 				goingUp = false;
 			}
 		} else {
 			transform.Translate (0, -speed, 0);
-			if (transform.position.y < originalPosition.y) {
-				transform.position = originalPosition;
+			if (transform.localPosition.y < originalPosition.y) {
+				transform.localPosition = originalPosition;
 				isScooping = false;
 			}
 		}
