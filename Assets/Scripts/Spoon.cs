@@ -33,6 +33,7 @@ public class Spoon : MonoBehaviour {
 		if (item == null) {
 			OnScoop ("broth");
 		} else {
+			Destroy (item.gameObject);
 			OnScoop ("food");
 		}
 	}
