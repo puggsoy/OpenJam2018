@@ -8,9 +8,10 @@ public class Spoon : MonoBehaviour {
 	private Vector2 maxPosition;
 	private Vector2 originalPosition;
 	public bool isScooping = false;
+	public bool isSwirling = false;
 	public float speed = 10f;
 	public bool goingUp = false;
-	public System.Action<string> OnScoop;
+	public System.Action<SoupItem> OnScoop;
 
 	// Use this for initialization
 	void Start () {
@@ -30,12 +31,7 @@ public class Spoon : MonoBehaviour {
 		isScooping = true;
 		SoupItem item = Soup.Instance.RemoveItem (index);
 
-		if (item == null) {
-			OnScoop ("broth");
-		} else {
-			Destroy (item.gameObject);
-			OnScoop ("food");
-		}
+		OnScoop (item);
 	}
 
 	void AnimateScoop() {
@@ -56,5 +52,11 @@ public class Spoon : MonoBehaviour {
 			}
 		}
 	
+	}
+
+	void AnimateSpoonSwirling() {
+		if (!isSwirling)
+			return;
+		
 	}
 }
