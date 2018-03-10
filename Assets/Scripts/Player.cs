@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 	public int numPreferredFoodEaten = 0;
 	public Spoon spoon;
 	public string eatInput;
+    public string swirlInput;
 	public int section = 0;
 
 	private Dictionary<SoupItem.ItemType, int> tally;
@@ -34,7 +35,11 @@ public class Player : MonoBehaviour {
 		if (eatIsDown) {
 			spoon.Scoop (section);
 		}
-
+        bool swirlIsDown = Input.GetButtonDown(swirlInput);
+        if (swirlIsDown)
+        {
+            Soup.Instance.Swirl();
+        }
 		if (Input.GetKeyDown (KeyCode.Return)) {
 			foreach (SoupItem.ItemType t in tally.Keys) {
 				Debug.Log ("You ate " + tally [t] + " " + t.ToString() + "s!");
@@ -42,6 +47,7 @@ public class Player : MonoBehaviour {
 
 			Debug.Log (mouthfuls + " mouthfuls in total!");
 		}
+
 	}
 
 	void Eat(SoupItem item) {
