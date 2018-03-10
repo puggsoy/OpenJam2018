@@ -12,7 +12,9 @@ public class Soup : MonoBehaviour
     public float m_maxSoupLevel = 1000.0f;
 
     [SerializeField]
-    public RectTransform m_soupRect = null;
+    public SpriteRenderer m_soupSprite = null;
+    [SerializeField]
+    public SpriteRenderer m_bowlSprite = null;
 
     [SerializeField]
     public float m_itemFrequencyMin = 0.0f;
@@ -31,12 +33,10 @@ public class Soup : MonoBehaviour
 
     public int m_numSections = 0;
 
-    [SerializeField]
-    public Image m_soupImage = null;
-
     public float m_currentSoupLevel = 0.0f;
     public float m_soupPercentage = 1.0f;
     public List<SoupSection> m_sectionsList = null;
+    public bool m_gameRunning = true;
 
     private float m_itemTimer = 0.0f;
 
@@ -84,7 +84,7 @@ public class Soup : MonoBehaviour
         m_sectionsList = new List<SoupSection>();
         float areaSize = 360.0f / m_numSections;
         float angle = 0.0f;
-        float radius = m_soupRect.rect.width / 2;
+        float radius = m_soupSprite.bounds.size.x / 2;
         for (int i = 0; i < m_numSections; ++i)
         {
             m_sectionsList.Add(new SoupSection(areaSize, i, m_itemPrefab, angle, radius));
@@ -105,7 +105,7 @@ public class Soup : MonoBehaviour
     private void DrawSections()
     {
         Vector2 center = transform.position;
-        float radius = m_soupRect.rect.width / 2;
+        float radius = m_soupSprite.bounds.size.x / 2;
 
         float angleDiff = 360.0f / m_numSections;
         float angle = 0.0f;
@@ -120,7 +120,7 @@ public class Soup : MonoBehaviour
 
     private void UpdateSoupImage()
     {
-        m_soupImage.transform.localScale = new Vector3(m_soupPercentage, m_soupPercentage, m_soupPercentage);
+        m_soupSprite.transform.localScale = new Vector3(m_soupPercentage, m_soupPercentage, m_soupPercentage);
     }
 
     private void UpdatePercentage()
@@ -152,6 +152,13 @@ public class Soup : MonoBehaviour
         {
             SpawnItem();
             m_itemTimer = Random.Range(m_itemFrequencyMin, m_itemFrequencyMax);
+        }
+
+        for (int i = 0; i < m_sectionsList.Count; ++i)
+        {
+            m_sectionsList[i].m_radius = m_soupSprite.bounds.size.x / 2;
+
+            m_sectionsList[i].Update();
         }
     }
 }

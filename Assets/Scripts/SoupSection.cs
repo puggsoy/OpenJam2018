@@ -23,10 +23,17 @@ public class SoupSection
         m_radius = radius;
     }
 
+    public void Update()
+    {
+        for (int i = 0; i < m_items.Count; ++i)
+        {
+            m_items[i].transform.Rotate(Vector3.forward, m_items[i].m_rotationSpeed * Time.deltaTime);
+        }
+    }
+
     public void SpawnItem()
     {
         // this is a non equal distribution of points
-
         // first pick a random angle
         float randAngle = Random.Range(m_startAngle, m_endAngle);
 
@@ -41,11 +48,10 @@ public class SoupSection
         float y = Soup.Instance.transform.position.y + randDistance * Mathf.Sin(randAngle * (Mathf.PI / 180));
         Vector2 spawnPoint = new Vector2(x, y);
 
-        Debug.Log(x + ", " + y);
-
         SoupItem spawned = Soup.Instance.InstantiateSoupItem(spawnPoint, new Quaternion(Quaternion.identity.x, Quaternion.identity.y, randRotation, Quaternion.identity.w));
-        spawned.transform.parent = Soup.Instance.transform;
+        spawned.transform.SetParent(Soup.Instance.transform);
         spawned.transform.position = spawnPoint;
+        spawned.m_rotationSpeed = Random.Range(-15.0f, 15.0f);
 
         m_items.Add(spawned);
     }
