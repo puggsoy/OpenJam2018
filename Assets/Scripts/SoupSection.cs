@@ -13,7 +13,7 @@ public class SoupSection
     public float m_endAngle = 0.0f;
     public float m_radius = 0.0f;
 
-    private bool m_isSwirling = false;
+    public bool m_isSwirling = false;
     private float m_distanceToMove = 0.0f;
 
     public SoupSection(float area, int index, float start, float radius, SoupItem.ItemType type)
@@ -28,11 +28,36 @@ public class SoupSection
         m_itemType = type;
     }
 
+    public bool IsInSoup(SoupItem item)
+    {
+        float distance = Mathf.Abs(Vector3.Distance(item.transform.position, Soup.Instance.transform.position));
+        float soupDistance = (Soup.Instance.m_soupSprite.bounds.size.x / 2) * Soup.Instance.m_soupPercentage;
+
+        soupDistance += 1.0f;
+
+        if (distance < soupDistance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void Update()
     {
-        for (int i = 0; i < m_items.Count; ++i)
+        for (int i = m_items.Count - 1; i >= 0; --i)
         {
-            m_items[i].transform.Rotate(Vector3.forward, m_items[i].m_rotationSpeed * Time.deltaTime);
+            if (IsInSoup(m_items[i]))
+            {
+                m_items[i].transform.Rotate(Vector3.forward, m_items[i].m_rotationSpeed * Time.deltaTime);
+            }
+            else
+            {
+                m_items[i].Kill();
+                m_items.RemoveAt(i);
+            }
         }
 
         if (m_isSwirling)

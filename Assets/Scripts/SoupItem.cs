@@ -41,4 +41,9 @@ public class SoupItem : MonoBehaviour
     {
         transform.Rotate(Vector3.forward, m_rotationSpeed * Time.deltaTime);
     }
+
+    public void Kill()
+    {
+        DestroyImmediate(gameObject);
+    }
 }

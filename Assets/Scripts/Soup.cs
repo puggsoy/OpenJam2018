@@ -20,7 +20,9 @@ public class Soup : MonoBehaviour
 
     [Header("Assets")]
     [SerializeField]
-    private SpriteRenderer m_soupSprite = null;
+    public SpriteRenderer m_soupSprite = null;
+    [SerializeField]
+    public SpriteRenderer m_soupWaveSprite = null;
     [SerializeField]
     private SpriteRenderer m_bowlSprite = null;
     [SerializeField]
@@ -64,6 +66,11 @@ public class Soup : MonoBehaviour
         }
     }
 
+    public void DestroyItem(SoupItem item)
+    {
+        Destroy(item);
+    }
+
 	// Use this for initialization
 	void Awake ()
     {
@@ -98,7 +105,7 @@ public class Soup : MonoBehaviour
 
         for (int i = 0; i < m_numSections; ++i)
         {
-            SoupItem.ItemType currentType = (SoupItem.ItemType)Random.Range((int)SoupItem.ItemType.Broccoli, (int)SoupItem.ItemType.Shrimp);
+            SoupItem.ItemType currentType = (SoupItem.ItemType)Random.Range((int)SoupItem.ItemType.Broccoli, (int)SoupItem.ItemType.Shrimp + 1);
 
             while (currentType == previousType || (i == m_numSections - 1 && currentType == firstType))
             {
@@ -190,6 +197,8 @@ public class Soup : MonoBehaviour
 
     private void SpawnItem()
     {
+        if (m_currentSoupLevel <= 0)
+            return;
         // Pick a random section
 
         // Populate list of available sections
@@ -240,6 +249,12 @@ public class Soup : MonoBehaviour
             m_sectionsList[i].m_radius = m_soupSprite.bounds.size.x / 2;
 
             m_sectionsList[i].Update();
+        }
+
+        if (m_sectionsList[0].m_isSwirling)
+        {
+            float distanceMoved = (m_sectionsList[0].m_endAngle - m_sectionsList[0].m_startAngle) * Time.deltaTime * m_swirlSpeed;
+            m_soupWaveSprite.transform.Rotate(Vector3.back, distanceMoved);
         }
     }
 }
