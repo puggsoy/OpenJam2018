@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Table
+    uniqueID: 2538766419
+    locked: 0
+  - name: Bowl
+    uniqueID: 749483849
+    locked: 0
+  - name: Broth
+    uniqueID: 2717887103
+    locked: 0
+  - name: Spoon
+    uniqueID: 3200682427
+    locked: 0
+  - name: Food
+    uniqueID: 2010059693
+    locked: 0
