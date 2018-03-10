@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public int numPreferredFoodEaten = 0;
 	public Spoon spoon;
 	public string eatInput;
+	public int section = 0;
 
 
 	// Use this for initialization
@@ -22,11 +23,11 @@ public class Player : MonoBehaviour {
 		
 		bool eatIsDown = Input.GetButtonDown (eatInput);
 		if (eatIsDown) {
-			spoon.Scoop ();
+			spoon.Scoop (section);
 		}
 	}
 
-	void Eat() {
-		Debug.Log ("yummy!!!");
+	void Eat(string msg) {
+		Debug.Log (msg);
 	}
 }
