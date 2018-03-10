@@ -33,6 +33,14 @@ public class SoupSection
         }
     }
 
+    public void Swirl()
+    {
+        for (int i = 0; i < m_items.Count; ++i)
+        {
+            m_items[i].transform.RotateAround(Soup.Instance.transform.position, Vector3.forward, m_endAngle - m_startAngle);
+        }
+    }
+
     public void SpawnItem()
     {
         // this is a non equal distribution of points
