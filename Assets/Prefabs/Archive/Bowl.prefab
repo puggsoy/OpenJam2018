@@ -85,17 +85,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxSoupLevel: 1000
-  m_soupRect: {fileID: 224448110436741394}
-  m_itemFrequencyMin: 0.1
-  m_itemFrequencyMax: 1
-  m_itemPrefab: {fileID: 224323082977769408, guid: a8cd9c55eacaf5a4882eb020b42f983c,
-    type: 2}
-  m_numPlayers: 4
-  m_spacesBetweenPlayers: 2
-  m_numSections: 4
-  m_soupImage: {fileID: 114187802408518256}
   m_currentSoupLevel: 0
   m_soupPercentage: 1
+  m_numSections: 4
+  m_soupSprite: {fileID: 0}
+  m_bowlSprite: {fileID: 0}
+  m_itemPrefabs: []
+  m_itemFrequencyMin: 0.1
+  m_itemFrequencyMax: 1
+  m_maxItemsInSoup: 12
+  m_maxItemsInSection: 3
+  m_numPlayers: 4
+  m_spacesBetweenPlayers: 2
+  m_gameRunning: 1
 --- !u!114 &114848550578634164
 MonoBehaviour:
   m_ObjectHideFlags: 1
