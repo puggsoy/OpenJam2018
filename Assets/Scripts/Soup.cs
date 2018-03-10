@@ -16,6 +16,7 @@ public class Soup : MonoBehaviour
     public int m_numSections = 0;
     public List<SoupSection> m_sectionsList = null;
     public float m_swirlSpeed = 1.0f;
+    public float m_brothValue = 10.0f;
 
     [Header("Assets")]
     [SerializeField]
@@ -129,12 +130,19 @@ public class Soup : MonoBehaviour
 	public SoupItem RemoveItem(int index)
 	{
 		if (m_sectionsList [index].m_items.Count == 0)
-			return null;
-		SoupItem itm = m_sectionsList [index].m_items [0];
-		m_sectionsList [index].m_items.RemoveAt (0);
-		return itm;
-	}
+        {
+            RemoveSoup(m_brothValue);
+            return null;
+        }
 
+		SoupItem item = m_sectionsList [index].m_items[0];
+		m_sectionsList [index].m_items.RemoveAt(0);
+
+        RemoveSoup(item.m_soupValue);
+
+		return item;
+	}
+    
     private void DrawSections()
     {
         Vector2 center = transform.position;
