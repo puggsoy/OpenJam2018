@@ -7,6 +7,10 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager Instance = null;
 	public GameObject ReadySetGoSFX;
 	private AudioSource ReadySetGo;
+	public GameObject GameOverSFX;
+	private AudioSource GameOver;
+	public GameObject SoupSoundsMusic;
+	private AudioSource SoupSounds;
 
 	public GameObject playerSwirlSFX;
 	public GameObject playerSlurpSFX;
@@ -51,9 +55,17 @@ public class AudioManager : MonoBehaviour {
 		
 	}
 
+	public void MUSICSoupSounds()
+	{
+		SoupSounds.Play();
+	}
 	public void SFXReadySetGo()
 	{
 		ReadySetGo.Play();
+	}
+	public void SFXGameOver()
+	{
+		GameOver.Play();
 	}
 	public void SFXplayerSwirl()
 	{
