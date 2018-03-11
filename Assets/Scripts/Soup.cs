@@ -33,6 +33,8 @@ public class Soup : MonoBehaviour
     public float m_slurpChance = 0.5f;
     [Range(0, 1)]
     public float m_eatChance = 0.5f;
+    [Range(0, 1)]
+    public float m_swirlChance = 0.5f;
 
 
     [Header("Spawning")]
@@ -192,6 +194,9 @@ public class Soup : MonoBehaviour
     {
         List<SoupItem> lastList = m_sectionsList[0].m_items;
         SoupItem.ItemType lastType = m_sectionsList[0].m_itemType;
+
+        if (Random.Range(0.0f, 1.0f) <= m_swirlChance)
+            AudioManager.Instance.SFXplayerSwirl();
 
         for (int i = 0; i < m_numSections - 1; ++i)
         {
