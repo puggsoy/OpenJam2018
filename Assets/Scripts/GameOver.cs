@@ -45,7 +45,14 @@ public class GameOver : MonoBehaviour
         if (spaceDown)
         {
             restartable = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+			AudioManager.Instance.SFXReadySetGo();
+			Invoke("SceneStarter", 2.760431f);
+
+		}
     }
+
+	void SceneStarter()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
 }

@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager Instance = null;
 	public GameObject ReadySetGoSFX;
 	private AudioSource ReadySetGo;
+	//public float currentSFXLength;
 	public GameObject GameOverSFX;
 	private AudioSource GameOver;
 	public GameObject SoupSoundsMusic;
@@ -41,6 +42,7 @@ public class AudioManager : MonoBehaviour {
     void Start () {
 		SoupSounds = SoupSoundsMusic.GetComponent<AudioSource>();
 		ReadySetGo = ReadySetGoSFX.GetComponent<AudioSource>();
+		Debug.Log(ReadySetGo.clip.length);
 		GameOver = GameOverSFX.GetComponent<AudioSource>();
 		playerSwirls = playerSwirlSFX.GetComponentsInChildren<AudioSource>();
 		allPlayerSwirls = playerSwirls.Length;
@@ -63,6 +65,7 @@ public class AudioManager : MonoBehaviour {
 	}
 	public void SFXReadySetGo()
 	{
+		//currentSFXLength = ReadySetGo.clip.length;
 		ReadySetGo.Play();
 	}
 	public void SFXGameOver()
