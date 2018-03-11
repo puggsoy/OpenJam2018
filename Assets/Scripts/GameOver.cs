@@ -22,8 +22,9 @@ public class GameOver : MonoBehaviour
     {
         resultScreensParent.SetActive(true);
         Soup.Instance.OnEmpty -= OnGameOver;
+		AudioManager.Instance.SFXGameOver();
 
-        Player.paused = true;
+		Player.paused = true;
 
         for(int i = 0; i < resultScreens.Length; i++)
         {
@@ -44,7 +45,14 @@ public class GameOver : MonoBehaviour
         if (spaceDown)
         {
             restartable = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+			AudioManager.Instance.SFXReadySetGo();
+			Invoke("SceneStarter", 2.760431f);
+
+		}
     }
+
+	void SceneStarter()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
 }
