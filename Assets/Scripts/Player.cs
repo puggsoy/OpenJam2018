@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        paused = false;
 		spoon.OnScoop += Eat;
 
 		tally = new Dictionary<SoupItem.ItemType, int> ();
