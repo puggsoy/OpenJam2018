@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 
     public static bool paused = false;
 
-	private Dictionary<SoupItem.ItemType, int> tally;
+	public Dictionary<SoupItem.ItemType, int> tally;
 
 
 	// Use this for initialization
@@ -44,21 +44,21 @@ public class Player : MonoBehaviour {
         {
             Soup.Instance.Swirl();
         }
-		if (Input.GetKeyDown (KeyCode.Return)) {
+		/*if (Input.GetKeyDown (KeyCode.Return)) {
 			foreach (SoupItem.ItemType t in tally.Keys) {
 				Debug.Log ("You ate " + tally [t] + " " + t.ToString() + "s!");
 			}
 
 			Debug.Log (mouthfuls + " mouthfuls in total!");
-		}
+		}*/
 
 	}
 
 	void Eat(SoupItem item) {
 		if (item == null) {
-			Debug.Log ("broth");
+			//Debug.Log ("broth");
 		} else {
-			Debug.Log (item.m_itemType);
+			//Debug.Log (item.m_itemType);
 			tally [item.m_itemType]++;
 			Destroy (item.gameObject);
 		}
