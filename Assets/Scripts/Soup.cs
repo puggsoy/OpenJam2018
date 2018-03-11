@@ -28,6 +28,13 @@ public class Soup : MonoBehaviour
     [SerializeField]
     private List<Transform> m_itemPrefabs = null;
 
+    [Header("Audio")]
+    [Range(0, 1)]
+    public float m_slurpChance = 0.5f;
+    [Range(0, 1)]
+    public float m_eatChance = 0.5f;
+
+
     [Header("Spawning")]
     [SerializeField]
     private float m_itemFrequencyMin = 0.0f;
@@ -139,11 +146,26 @@ public class Soup : MonoBehaviour
 		if (m_sectionsList [index].m_items.Count == 0)
         {
             RemoveSoup(m_brothValue);
+
+            if (Random.Range(0.0f, 1.0f) <= m_slurpChance)
+                AudioManager.Instance.SFXplayerSlurp();
             return null;
         }
 
 		SoupItem item = m_sectionsList [index].m_items[0];
 		m_sectionsList [index].m_items.RemoveAt(0);
+
+        if (Random.Range(0.0f, 1.0f) <= m_eatChance)
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                AudioManager.Instance.SFXplayerEat();
+            }
+            else
+            {
+                AudioManager.Instance.SFXplayerHappy();
+            }
+        }   
 
         RemoveSoup(item.m_soupValue);
 

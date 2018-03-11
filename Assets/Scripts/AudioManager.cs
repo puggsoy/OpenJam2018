@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor.Audio;
 
 public class AudioManager : MonoBehaviour {
-
+    public static AudioManager Instance = null;
 	public GameObject ReadySetGoSFX;
 	private AudioSource ReadySetGo;
 
@@ -21,9 +21,20 @@ public class AudioManager : MonoBehaviour {
 	private int allPlayerEats;
 	private int allPlayerHappys;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		ReadySetGoSFX.GetComponent<AudioSource>();
 		playerSwirls = playerSwirlSFX.GetComponentsInChildren<AudioSource>();
 		allPlayerSwirls = playerSwirls.Length;
