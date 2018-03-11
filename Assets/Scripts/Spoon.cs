@@ -8,20 +8,31 @@ public class Spoon : MonoBehaviour {
 	private Vector2 maxPosition;
 	private Vector2 originalPosition;
 	public bool isScooping = false;
-	public bool isSwirling = false;
 	public float speed = 10f;
 	public bool goingUp = false;
+
+    public float maxAngle = 50;
+    private Quaternion maxRotation;
+    private Quaternion originalRotation;
+    public bool isSwirling = false;
+    public float angleSpeed = 1;
+    public bool goingLeft = false;
+
 	public System.Action<SoupItem> OnScoop;
 
 	// Use this for initialization
 	void Start () {
 		originalPosition = (Vector2)transform.localPosition;
 		maxPosition = originalPosition + ((Vector2)Vector3.up * maxDistance);
+
+        originalRotation = transform.rotation;
+        maxRotation = Quaternion.Euler(0, 0, originalRotation.eulerAngles.z + maxAngle);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		AnimateScoop ();
+		AnimateScoop();
+        AnimateSwirl();
 	}
 
 	public void Scoop(int index) {
@@ -33,6 +44,16 @@ public class Spoon : MonoBehaviour {
 
 		OnScoop (item);
 	}
+
+    public void Swirl()
+    {
+        if (isSwirling)
+            return;
+        goingLeft = true;
+        isSwirling = true;
+
+        Soup.Instance.Swirl();
+    }
 
 	void AnimateScoop() {
 		if (!isScooping)
@@ -54,9 +75,29 @@ public class Spoon : MonoBehaviour {
 	
 	}
 
-	void AnimateSpoonSwirling() {
+	void AnimateSwirl() {
 		if (!isSwirling)
 			return;
 		
+        if (goingLeft)
+        {
+            transform.Rotate(0, 0, angleSpeed);
+
+            if (transform.rotation.eulerAngles.z > maxRotation.eulerAngles.z)
+            {
+                transform.rotation = maxRotation;
+                goingLeft = false;
+            }
+        }
+        else
+        {
+            transform.Rotate(0, 0, -angleSpeed);
+
+            if (transform.rotation.eulerAngles.z < originalRotation.eulerAngles.z)
+            {
+                transform.rotation = originalRotation;
+                isSwirling = false;
+            }
+        }
 	}
 }

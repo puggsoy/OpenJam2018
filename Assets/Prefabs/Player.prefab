@@ -117,6 +117,7 @@ MonoBehaviour:
   numPreferredFoodEaten: 0
   spoon: {fileID: 114214015940917374}
   eatInput: Eat1
+  swirlInput: 
   section: 7
 --- !u!114 &114214015940917374
 MonoBehaviour:
@@ -131,9 +132,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 5
   isScooping: 0
-  isSwirling: 0
   speed: 2
   goingUp: 0
+  maxAngle: 50
+  isSwirling: 0
+  angleSpeed: 7
+  goingLeft: 0
 --- !u!212 &212556760440414646
 SpriteRenderer:
   m_ObjectHideFlags: 1

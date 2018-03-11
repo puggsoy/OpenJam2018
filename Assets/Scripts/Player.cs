@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
         bool swirlIsDown = Input.GetButtonDown(swirlInput);
         if (swirlIsDown)
         {
-            Soup.Instance.Swirl();
+            spoon.Swirl();
         }
 		/*if (Input.GetKeyDown (KeyCode.Return)) {
 			foreach (SoupItem.ItemType t in tally.Keys) {
