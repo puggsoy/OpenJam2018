@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 4334919737588098}
   - component: {fileID: 82528773243565382}
   m_Layer: 0
-  m_Name: Music_Loop
+  m_Name: Music_SoupSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4723,6 +4723,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReadySetGoSFX: {fileID: 1064909918348174}
+  GameOverSFX: {fileID: 1032331831745672}
+  SoupSoundsMusic: {fileID: 1766943505125560}
   playerSwirlSFX: {fileID: 1643211423621964}
   playerSlurpSFX: {fileID: 1982276909361916}
   playerEatSFX: {fileID: 1237207163406710}
