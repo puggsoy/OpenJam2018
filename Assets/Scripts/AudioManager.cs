@@ -39,7 +39,9 @@ public class AudioManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		ReadySetGoSFX.GetComponent<AudioSource>();
+		SoupSounds = SoupSoundsMusic.GetComponent<AudioSource>();
+		ReadySetGo = ReadySetGoSFX.GetComponent<AudioSource>();
+		GameOver = GameOverSFX.GetComponent<AudioSource>();
 		playerSwirls = playerSwirlSFX.GetComponentsInChildren<AudioSource>();
 		allPlayerSwirls = playerSwirls.Length;
 		playerSlurps = playerSlurpSFX.GetComponentsInChildren<AudioSource>();

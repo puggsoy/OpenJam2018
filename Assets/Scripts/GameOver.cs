@@ -22,8 +22,9 @@ public class GameOver : MonoBehaviour
     {
         resultScreensParent.SetActive(true);
         Soup.Instance.OnEmpty -= OnGameOver;
+		AudioManager.Instance.SFXGameOver();
 
-        Player.paused = true;
+		Player.paused = true;
 
         for(int i = 0; i < resultScreens.Length; i++)
         {
