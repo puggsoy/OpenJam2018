@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    private Text m_text = null;
-
+    public GameObject resultScreensParent;
+    
     private void Start()
     {
-        m_text = GetComponent<Text>();
         Soup.Instance.OnEmpty += OnGameOver;
-
-        m_text.enabled = false;
+        resultScreensParent.SetActive(false);
     }
 
     private void OnGameOver()
     {
-        m_text.enabled = true;
+        resultScreensParent.SetActive(true);
         Soup.Instance.OnEmpty -= OnGameOver;
+
+        Player.paused = true;
     }
 }

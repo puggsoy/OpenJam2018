@@ -154,13 +154,33 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
         type: 2}
+      propertyPath: m_slurpChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_eatChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_maxItemsInSoup
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
+      propertyPath: m_maxItemsInSection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
+        type: 2}
       propertyPath: m_itemFrequencyMin
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
         type: 2}
-      propertyPath: m_swirlSpeed
-      value: 5
+      propertyPath: m_itemFrequencyMax
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e6f142b8d70ce74bb229bdd367d837a, type: 2}
@@ -488,6 +508,11 @@ Prefab:
         type: 2}
       propertyPath: section
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114086972719621802, guid: 51534214ecd0645319409d6e6862a298,
+        type: 2}
+      propertyPath: swirlInput
+      value: Swirl1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51534214ecd0645319409d6e6862a298, type: 2}
