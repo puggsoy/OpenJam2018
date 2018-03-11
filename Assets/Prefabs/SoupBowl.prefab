@@ -188,6 +188,7 @@ MonoBehaviour:
   - {fileID: 4452079455424206, guid: 0f5f6965f414d2d44b6e61a5500a71f9, type: 2}
   m_slurpChance: 0.5
   m_eatChance: 0.5
+  m_swirlChance: 0.5
   m_itemFrequencyMin: 0.5
   m_itemFrequencyMax: 1
   m_maxItemsInSoup: 15
@@ -209,7 +210,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e51503e7a4abd044996d9a7cc8c4c4c2, type: 2}
+  - {fileID: 2100000, guid: 0f9ed795af19afb4dbd7d68040d48bca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -297,7 +298,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: eb83f3cb2cd170444bbab8190d3e4171, type: 2}
+  - {fileID: 2100000, guid: 9be5eeeca83bcac408490a5a61c7224a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
