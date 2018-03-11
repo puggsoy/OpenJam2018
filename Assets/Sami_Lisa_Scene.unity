@@ -318,7 +318,7 @@ Prefab:
     - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
         type: 2}
       propertyPath: m_maxSoupLevel
-      value: 100
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 114743966401292254, guid: 6e6f142b8d70ce74bb229bdd367d837a,
         type: 2}

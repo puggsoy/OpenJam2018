@@ -36,7 +36,7 @@ public class Spoon : MonoBehaviour {
 	}
 
 	public void Scoop(int index) {
-		if (isScooping)
+		if (isScooping || isSwirling)
 			return;
 		goingUp = true;
 		isScooping = true;
@@ -47,7 +47,7 @@ public class Spoon : MonoBehaviour {
 
     public void Swirl()
     {
-        if (isSwirling)
+        if (isSwirling || isScooping)
             return;
         goingLeft = true;
         isSwirling = true;
