@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/MainScene.unity
+    guid: 0c12e087ea3d7d644abe0ebb066b81fa
+  - enabled: 1
+    path: Assets/Olivier.unity
+    guid: 821a9e02daf82de4bba0502ea8cf2275
